@@ -25,3 +25,138 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sidebar-items:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+@media only screen and (max-width: 767px) {
+  .sidebar-items {
+    margin-bottom: 0 !important;
+  }
+}
+
+.sidebar-items {
+  color: gray;
+  font-size: large;
+}
+
+.sidebar-items p {
+  margin-left: 1em;
+}
+
+.sidebar-items:hover svg {
+  color: #B57295;
+}
+
+.sidebar-items:hover p {
+  color: #fff;
+}
+
+.active {
+  color: #fff;
+}
+
+.active-icon {
+  color: #B57295 !important;
+}
+
+
+.chart-container {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 20px;
+  height: 400px;
+  width: 600px;
+  position: relative;
+}
+
+.info-container {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 20px;
+  height: 150px;
+  width: 600px;
+  position: relative;
+}
+
+.empty-vertical{
+  height: 10px;
+}
+
+.chart-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.chart-legend {
+  margin-top: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.chart-legend-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.chart-legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.chart-legend-item-1::before {
+  background-color: #00BFFF;
+}
+
+.chart-legend-item-label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.datetime-picker {
+  display: flex;
+  align-items: center;
+}
+
+.datetime-picker-right-element{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.datetime-picker.expanded {
+  height: 280px;
+}
+

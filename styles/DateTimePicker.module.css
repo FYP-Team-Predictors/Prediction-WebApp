@@ -1,0 +1,33 @@
+.dtp_container{
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+    flex-basis: 620px;
+    flex-direction: row;
+    flex-grow: 100;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: gray;
+}
+
+.custom-dtp {
+    position: relative;
+    z-index: 999;
+}
+
+
+.custom-dtp .react-datetime-picker__calendar {
+    background-color: gray;
+    color: green;
+}
+
+.custom-dtp .react-calendar__tile--now {
+    background-color: gray;
+    color: green;
+}
+
+.custom-dtp .react-calendar__tile--active,
+.custom-dtp .react-calendar__tile--active:hover {
+    background-color: green;
+    color: gray;
+}
