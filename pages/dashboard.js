@@ -24,8 +24,6 @@ import Sidebar from "@/components/side-nav-bar";
 export default function Dashboard() {
     const [display, changeDisplay] = useState('hide')
     const [value, changeValue] = useState(1)
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
     const [tableData, setTableData] = useState([]);
     const [lastDate, setLastDate] = useState("");
 
