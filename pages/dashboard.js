@@ -36,8 +36,7 @@ export default function Dashboard() {
             const result = Papa.parse(text, { header: true });
             const table_data=result.data;
             setTableData(table_data);
-            const lastRow = table_data[table_data.length - 2];
-            setLastDate(lastRow.Open_time);
+            setLastDate(table_data[table_data.length - 2].Open_time);
         }
         fetchData();
     }, []);
@@ -62,15 +61,15 @@ export default function Dashboard() {
             >
                 <Heading
                     fontWeight="normal"
-                    mb={4}
+                    mb={2}
                     letterSpacing="tight"
                 >
                     Market Movement Predictor, <Flex display="inline-flex" fontWeight="bold">Bottoms</Flex>
                 </Heading>
-                <ChartComponent />
-                <Flex justifyContent="space-between" mt={8}>
+                <ChartComponent next_timestamp={lastDate} />
+                <Flex justifyContent="space-between" mt={3}>
                     <Flex align="flex-end">
-                        <Heading as="h2" size="lg" letterSpacing="tight">Transactions</Heading>
+                        <Heading as="h2" size="md" letterSpacing="tight">Transactions</Heading>
                         <Text fontSize="small" color="gray" ml={4}>Until {lastDate}</Text>
                     </Flex>
                     <IconButton icon={<FiCalendar />} />

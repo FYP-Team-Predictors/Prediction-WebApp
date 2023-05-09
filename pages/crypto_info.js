@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Flex, Heading, Text, Box, SimpleGrid, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Heading, Text, Box, SimpleGrid, useColorModeValue, Center, Spinner } from '@chakra-ui/react'
 import { Line } from 'react-chartjs-2'
 import Sidebar from "@/components/side-nav-bar";
 
@@ -158,14 +158,9 @@ export default function Dashboard() {
                     </>
                 )}
                 {!data && (
-                    <Flex
-                        justify="center"
-                        align="center"
-                        h="100vh"
-                        w="100vw"
-                    >
-                        <Text fontSize="3xl">Loading...</Text>
-                    </Flex>
+                    <Center h="100vh">
+                        <Spinner size="xl" color="blue.500" animation="spin" />
+                    </Center>
                 )}
             </Flex>
         </Flex>
