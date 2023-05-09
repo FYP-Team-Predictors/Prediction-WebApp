@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 import Papa from 'papaparse';
 import Chart from 'chart.js/auto';
 import { CategoryScale, LinearScale, LineController, PointElement, LineElement } from 'chart.js';
+import {Flex, Heading, IconButton, Text} from "@chakra-ui/react";
 
 Chart.register(CategoryScale, LinearScale, LineController, PointElement, LineElement);
 
@@ -11,18 +12,18 @@ function ChartComponent() {
 
     React.useEffect(() => {
         async function getData() {
-            const response = await fetch('/BTCUSDT.csv');
+            const response = await fetch('/BTCUSDT_dummy.csv');
             const reader = response.body.getReader();
             const result = await reader.read(); // raw array
             const decoder = new TextDecoder('utf-8');
             const csv = decoder.decode(result.value); // the csv text
             const results = Papa.parse(csv, { header: true }); // object with { data, errors, meta }
             const data = {
-                labels: results.data.map(row => row.date),
+                labels: results.data.map(row => row.Open_time),
                 datasets: [
                     {
                         label: 'Close Price',
-                        data: results.data.map(row => row.close_price),
+                        data: results.data.map(row => row.Close_value),
                         fill: false,
                         borderColor: '#00BFFF', // Use a blue color for the line
                         pointBackgroundColor: '#00BFFF', // Use the same blue color for the points
@@ -58,12 +59,23 @@ function ChartComponent() {
                 grid: {
                     display: false,
                 },
+                ticks: {
+                    color: 'dark_grey',
+                    font: {
+                        size: 13
+                    }
+                }
             },
             y: {
                 grid: {
                     borderDash: [3, 3],
                 },
-                // beginAtZero: true, // this works
+                ticks: {
+                    color: 'dark_grey',
+                    font: {
+                        size: 12
+                    }
+                }
             },
         },
         plugins: {
@@ -75,29 +87,39 @@ function ChartComponent() {
 
 
     return (
+
         <div>
-            <div className="chart-container">
-                <h2 className="chart-title">BTC Price Prediction</h2>
+            <Flex justifyContent="left" mt={8}>
+                <Flex align="flex-start">
+                    <Heading as="h2" size="lg" letterSpacing="tight">BTC Price Prediction</Heading>
+                </Flex>
+            </Flex>
+
+            <Flex className="chart-container">
                 <Line data={chartData}  options={options}/>
-                {/*<div className="chart-legend">*/}
-                {/*    <div className="chart-legend-item chart-legend-item-1">*/}
-                {/*        <span className="chart-legend-item-label">Actual Price</span>*/}
-                {/*    </div>*/}
-                {/*    <div className="chart-legend-item chart-legend-item-2">*/}
-                {/*        <span className="chart-legend-item-label">Predicted Price</span>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-            </div>
-            <div className="empty-vertical"/>
-            <div className="info-container">
-                <h4 className="chart-title">Next timestep prediction</h4>
-                <p>
-                    Predicted Price for the next timestep:
-                    <br/>
-                    Probability of being a bottom:
-                    <br/>
+                <div className="chart-legend">
+                    <div className="chart-legend-item chart-legend-item-1">
+                        <span className="chart-legend-item-label">Actual Price</span>
+                    </div>
+                    <div className="chart-legend-item chart-legend-item-2">
+                        <span className="chart-legend-item-label">Predicted Price</span>
+                    </div>
+                </div>
+            </Flex>
+            <Flex className="empty-vertical" />
+
+            <Flex className="info-container" direction="column" align="flex-start">
+                <Heading as="h4" size="lg" letterSpacing="tight">Next timestep prediction</Heading>
+                <p style={{ fontSize: "1.2rem" }}>
+                    <br />
+                    Predicted Price for the next timestep: $ 13775.45
+                    <br />
+                    Probability of being a bottom: 2.345%
+                    <br />
                 </p>
-            </div>
+
+            </Flex>
+
         </div>
     );
 }

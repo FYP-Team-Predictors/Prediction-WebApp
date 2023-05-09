@@ -58,7 +58,7 @@ export default function SearchHomeView() {
                                 Enter Currency
                             </FormLabel>
                             <Input
-                                placeholder="e.g. USD, EUR, GBP"
+                                placeholder="E.g. BTC, ETH, SOL"
                                 value={currency}
                                 onChange={handleCurrencyChange}
                                 placeholderTextColor="gray.600"
@@ -66,18 +66,12 @@ export default function SearchHomeView() {
                         </FormControl>
                         <Box mb={4} display="flex" flexDirection="row" alignItems="space-between">
                             <FormLabel fontSize="lg" fontWeight="bold" mr={6}>
-                                From
+                                Required Prediction Timestamp
                             </FormLabel>
                             <DTP/>
                         </Box>
-                        <Box mb={4} display="flex" flexDirection="row" alignItems="space-between">
-                            <FormLabel fontSize="lg" fontWeight="bold" mr={12}>
-                                To
-                            </FormLabel>
-                            <DTP/>
-                        </Box>
-                        <Link href="#" fontSize="lg" mb={4}>
-                            What are these currencies?
+                        <Link href="#" fontSize="lg" mb={4} color="grey">
+                            <u>How to select a currency?</u>
                         </Link>
                     </Box>
                     <Button
