@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import * as React from 'react';
 import {
     Box,
     Button,
@@ -11,12 +12,18 @@ import {
     Spacer,
     Text,
 } from '@chakra-ui/react';
-import { DTP } from '@/components/datetime-picker';
+import {DTP} from '@/components/datetime-picker';
 
 export default function SearchHomeView() {
     const [currency, setCurrency] = useState('');
     const [fromDate, setFromDate] = useState(new Date());
     const [toDate, setToDate] = useState(new Date());
+    // const classes = useStyles();
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
 
     const handleCurrencyChange = (event) => {
         setCurrency(event.target.value);
