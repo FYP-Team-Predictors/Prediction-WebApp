@@ -1,14 +1,32 @@
 import React, { useState } from 'react';
-import DateTimePicker from 'react-datetime-picker';
-
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDateTimePicker,
+} from '@material-ui/pickers';
 
 export function DTP() {
-    const [value, onChange] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
 
     return (
-        <DateTimePicker
-            onChange={onChange}
-            value={value}
-            className="custom-dtp"/>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDateTimePicker
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy hh:mm a"
+                margin="normal"
+                id="datetime-picker-inline"
+                label="Date and Time picker inline"
+                value={selectedDate}
+                onChange={handleDateChange}
+                KeyboardButtonProps={{
+                    'aria-label': 'change date and time',
+                }}
+            />
+        </MuiPickersUtilsProvider>
     );
 }
