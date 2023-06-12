@@ -1,5 +1,4 @@
 import React, { useState , useEffect} from 'react'
-import Papa from 'papaparse';
 import {
     Flex,
     Heading,
@@ -20,21 +19,39 @@ import {
 } from "react-icons/fi"
 import ChartComponent from "@/pages/chart";
 import Sidebar from "@/components/side-nav-bar";
+import { useRouter } from 'next/router';
 
 export default function Dashboard() {
     const [display, changeDisplay] = useState('hide')
-    const [value, changeValue] = useState(1)
+    //const [predCurrency, setPredCurrency] = useState("")
     const [tableData, setTableData] = useState([]);
-    const [lastDate, setLastDate] = useState("");
+    //const [lastDate, setLastDate] = useState("");
+    const router = useRouter();
+    const { currency, selectedDate, jsonData, nextPrice, nextBottomProb } = router.query;
+
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('/BTCUSDT_dummy.csv');
-            const text = await response.text();
-            const result = Papa.parse(text, { header: true });
-            const table_data=result.data;
-            setTableData(table_data);
-            setLastDate(table_data[table_data.length - 2].Open_time);
+
+            // Fetch data from the API or local JSON file
+            const dummyResponse = await fetch('/BTCUSDT_dummy.json');
+            const dummyJsonData = await dummyResponse.json();
+
+            const processedData = dummyJsonData.map((row) => ({
+                id: row.id,
+                Open_time: row.Open_time,
+                Open_value: row.Open_value,
+                High_value: row.High_value,
+                Low_value: row.Low_value,
+                Close_value: row.Close_value,
+                Volume: row.Volume,
+                Number_of_trades: row.Number_of_trades,
+            }));
+
+            setTableData(processedData);
+            //setLastDate(processedData[processedData.length - 2].Open_time);
+            //setLastDate(selectedDate);
+            //setPredCurrency(currency);
         }
         fetchData();
     }, []);
@@ -64,11 +81,11 @@ export default function Dashboard() {
                 >
                     Market Movement Predictor, <Flex display="inline-flex" fontWeight="bold">Bottoms</Flex>
                 </Heading>
-                <ChartComponent next_timestamp={lastDate} />
+                <ChartComponent predCurrency={currency} nextTimestamp={selectedDate} jsonData={jsonData} nextPrice={nextPrice} nextBottomProb={nextBottomProb}/>
                 <Flex justifyContent="space-between" mt={3}>
                     <Flex align="flex-end">
                         <Heading as="h2" size="md" letterSpacing="tight">Transactions</Heading>
-                        <Text fontSize="small" color="gray" ml={4}>Until {lastDate}</Text>
+                        <Text fontSize="small" color="gray" ml={4}>Until {selectedDate}</Text>
                     </Flex>
                     <IconButton icon={<FiCalendar />} />
                 </Flex>
@@ -99,7 +116,7 @@ export default function Dashboard() {
                                     </Tr>
                                 ))}
 
-                                {display == 'show' &&
+                                {display === 'show' &&
                                     <>
                                         {tableData.map((row) => (
                                             <Tr key={row.id}>
