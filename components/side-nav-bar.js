@@ -21,9 +21,12 @@ function Sidebar({ activePage }) {
                     flexDir="column"
                     as="nav"
                 >
+                    <Flex flexDir="column" alignItems="center" mb={1} mt={5}>
+                        <Avatar my={2} src="avatar-1.jpg" boxSize={["40px", "60px", "80px"]}/>
+                    </Flex>
                     <Heading
-                        mt={50}
-                        mb={[25, 50, 100]}
+                        mt={1}
+                        mb={[10, 25, 50]}
                         fontSize={["4xl", "4xl", "2xl", "3xl", "4xl",]}
                         alignSelf="center"
                         letterSpacing="tight"
@@ -57,14 +60,13 @@ function Sidebar({ activePage }) {
                                 <Icon as={FiDollarSign} fontSize="2xl" className={activePage === 'crypto_info' ? 'active-icon' : ''} />
                             </Link>
                             <Link href="/crypto_info" _hover={{ textDecor: 'none' }} display={["flex", "flex", "none", "flex", "flex"]}>
-                                <Text className={activePage === 'crypto_info' ? 'active' : ''}>Crypto Info</Text>
+                                <Text className={activePage === 'crypto_info' ? 'active' : ''}>Currency Info</Text>
                             </Link>
                         </Flex>
                     </Flex>
                 </Flex>
                 <Flex flexDir="column" alignItems="center" mb={10} mt={5}>
-                    <Avatar my={2} src="avatar-1.jpg" />
-                    <Text textAlign="center">Guest User</Text>
+                    <Text textAlign="center">Team Predictors</Text>
                 </Flex>
             </Flex>
         </Flex>

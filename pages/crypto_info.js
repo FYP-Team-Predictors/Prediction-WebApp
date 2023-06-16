@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Flex, Box, Table, Thead, Tbody, Tr, Th, Td , useColorModeValue, Center, Spinner } from '@chakra-ui/react'
+import React, { useState, useEffect } from 'react'
+import {Flex, Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, Center, Spinner, Heading} from '@chakra-ui/react'
 import Sidebar from "@/components/side-nav-bar";
 import TableComponent from "@/components/table-data";
 
@@ -23,6 +23,7 @@ export default function Crypto_info() {
     }, []);
 
     return (
+
         <Flex
             h={[null, null, "100vh"]}
             maxW="2000px"
@@ -33,14 +34,30 @@ export default function Crypto_info() {
             <Sidebar activePage="crypto_info" />
 
             {/* Column 2 */}
-            <Flex h="100vh" align="center" justify="center">
-                {!data ? (
-                    <Center h="100vh">
-                        <Spinner size="xl" color="blue.500" animation="spin" />
-                    </Center>
-                ) : (
-                    <TableComponent data={data} />
-                )}
+
+            <Flex
+                w={["100%", "100%", "100%", "100%", "100%"]}
+                p="3%"
+                flexDir="column"
+                overflow="auto"
+                minH="100vh"
+            >
+                <Heading
+                    fontWeight="normal"
+                    mb={2}
+                    letterSpacing="tight"
+                >
+                    Predicting, <Flex display="inline-flex" fontWeight="bold">Crypto & Stocks</Flex>
+                </Heading>
+                <Flex h="100vh" align="center">
+                    {!data ? (
+                        <Center h="100vh">
+                            <Spinner size="xl" color="blue.500" animation="spin" />
+                        </Center>
+                    ) : (
+                        <TableComponent data={data} />
+                    )}
+                </Flex>
             </Flex>
         </Flex>
     );
