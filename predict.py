@@ -21,3 +21,4 @@ if __name__ == "__main__":
 
     # Print the output for the API route to capture
     print(f'{data_file},{next_price},{next_bottom_prob}')
+

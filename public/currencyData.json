@@ -1,0 +1,32 @@
+[
+  {
+    "currencyName": "Bitcoin",
+    "currencySymbol": "BTC",
+    "stockExchangeName": "ABC Exchange"
+  },
+  {
+    "currencyName": "Litecoin",
+    "currencySymbol": "LTC",
+    "stockExchangeName": "XYZ Exchange"
+  },
+  {
+    "currencyName": "Ethereum",
+    "currencySymbol": "ETH",
+    "stockExchangeName": "PQR Exchange"
+  },
+  {
+    "currencyName": "Starbucks",
+    "currencySymbol": "SBUX",
+    "stockExchangeName": "DEF Exchange"
+  },
+  {
+    "currencyName": "Apple",
+    "currencySymbol": "AAPL",
+    "stockExchangeName": "GHI Exchange"
+  },
+  {
+    "currencyName": "Tesla",
+    "currencySymbol": "TSLA",
+    "stockExchangeName": "JKL Exchange"
+  }
+]

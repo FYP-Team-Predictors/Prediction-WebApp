@@ -23,21 +23,19 @@ import { useRouter } from 'next/router';
 
 export default function Dashboard() {
     const [display, changeDisplay] = useState('hide')
-    //const [predCurrency, setPredCurrency] = useState("")
     const [tableData, setTableData] = useState([]);
-    //const [lastDate, setLastDate] = useState("");
     const router = useRouter();
-    const { currency, selectedDate, jsonData, nextPrice, nextBottomProb } = router.query;
+    const { currency, timeStep, jsonData, nextPrice, nextBottomProb } = router.query;
 
 
     useEffect(() => {
         async function fetchData() {
 
             // Fetch data from the API or local JSON file
-            const dummyResponse = await fetch('/BTCUSDT_dummy.json');
-            const dummyJsonData = await dummyResponse.json();
+            //console.log(jsonData)
+            const tableResponse=JSON.parse(jsonData);
 
-            const processedData = dummyJsonData.map((row) => ({
+            const processedData = tableResponse.map((row) => ({
                 id: row.id,
                 Open_time: row.Open_time,
                 Open_value: row.Open_value,
@@ -49,9 +47,6 @@ export default function Dashboard() {
             }));
 
             setTableData(processedData);
-            //setLastDate(processedData[processedData.length - 2].Open_time);
-            //setLastDate(selectedDate);
-            //setPredCurrency(currency);
         }
         fetchData();
     }, []);
@@ -81,11 +76,11 @@ export default function Dashboard() {
                 >
                     Market Movement Predictor, <Flex display="inline-flex" fontWeight="bold">Bottoms</Flex>
                 </Heading>
-                <ChartComponent predCurrency={currency} nextTimestamp={selectedDate} jsonData={jsonData} nextPrice={nextPrice} nextBottomProb={nextBottomProb}/>
+                <ChartComponent predCurrency={currency} nextTimestamp={timeStep} jsonData={jsonData} nextPrice={nextPrice} nextBottomProb={nextBottomProb}/>
                 <Flex justifyContent="space-between" mt={3}>
                     <Flex align="flex-end">
                         <Heading as="h2" size="md" letterSpacing="tight">Transactions</Heading>
-                        <Text fontSize="small" color="gray" ml={4}>Until {selectedDate}</Text>
+                        <Text fontSize="small" color="gray" ml={4}>Until {timeStep}</Text>
                     </Flex>
                     <IconButton icon={<FiCalendar />} />
                 </Flex>

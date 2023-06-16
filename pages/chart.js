@@ -13,13 +13,19 @@ function ChartComponent({ predCurrency, nextTimestamp, jsonData, nextPrice, next
         async function getData() {
 
             // Fetch data from the API or local JSON file
-            const response = await fetch('/BTCUSDT_dummy.json');
-            const data = await response.json();
+            // const response = await fetch('/BTCUSDT_dummy.json');
+            const data = JSON.parse(jsonData);
 
             // Process the data to fit the chart format
             const labels = data.map(row => row.Open_time);
             const closePriceData = data.map(row => row.Close_value);
             const predictedPriceData = data.map(row => row.Predict_value);
+
+            // Add the next timestamp and price to the chart data
+            const nextTimestampIndex = labels.length;
+            labels.push(nextTimestamp);
+            closePriceData.push(null);
+            predictedPriceData.push(parseFloat(nextPrice));
 
             const chartData = {
                 labels: labels,
@@ -47,8 +53,10 @@ function ChartComponent({ predCurrency, nextTimestamp, jsonData, nextPrice, next
                         label: 'Predicted Price',
                         data: predictedPriceData,
                         fill: false,
-                        borderColor: '#FF4136',
-                        pointBackgroundColor: '#FF4136',
+                        borderColor: (context) =>
+                            context.dataIndex < nextTimestampIndex ? '#FFA500' : '#FF0000',
+                        pointBackgroundColor: (context) =>
+                            context.dataIndex === nextTimestampIndex ? '#FF0000' : '#FFA500',
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
                         pointHoverBorderColor: '#FF4136',
@@ -62,12 +70,11 @@ function ChartComponent({ predCurrency, nextTimestamp, jsonData, nextPrice, next
                         pointRadius: 1,
                         pointHitRadius: 10,
                     }
+
                 ],
             };
-
             setChartData(chartData);
         }
-
         getData();
     }, []);
 
@@ -168,8 +175,8 @@ function ChartComponent({ predCurrency, nextTimestamp, jsonData, nextPrice, next
                         <Flex className="empty-vertical" />
 
                         <Flex p={4} bg="gray.50" borderRadius="lg" align="center" justifyContent="center">
-                            <PredictionCard title="Predicted Price" value={nextPrice} />
-                            <PredictionCard title="Probability of Bottom" value={nextBottomProb} />
+                            <PredictionCard title="Predicted Price $" value={nextPrice} />
+                            <PredictionCard title="Probability of Being Bottom" value={nextBottomProb} />
                         </Flex>
                     </Flex>
                 </Flex>
