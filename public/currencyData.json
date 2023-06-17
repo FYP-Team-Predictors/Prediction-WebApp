@@ -2,31 +2,31 @@
   {
     "currencyName": "Bitcoin",
     "currencySymbol": "BTC",
-    "stockExchangeName": "ABC Exchange"
+    "stockExchangeName": "Binance Exchange"
   },
   {
     "currencyName": "Litecoin",
     "currencySymbol": "LTC",
-    "stockExchangeName": "XYZ Exchange"
+    "stockExchangeName": "Binance Exchange"
   },
   {
     "currencyName": "Ethereum",
     "currencySymbol": "ETH",
-    "stockExchangeName": "PQR Exchange"
+    "stockExchangeName": "Binance Exchange"
   },
   {
     "currencyName": "Starbucks",
     "currencySymbol": "SBUX",
-    "stockExchangeName": "DEF Exchange"
+    "stockExchangeName": "Nasdaq Exchange"
   },
   {
     "currencyName": "Apple",
     "currencySymbol": "AAPL",
-    "stockExchangeName": "GHI Exchange"
+    "stockExchangeName": "Nasdaq Exchange"
   },
   {
     "currencyName": "Tesla",
     "currencySymbol": "TSLA",
-    "stockExchangeName": "JKL Exchange"
+    "stockExchangeName": "Nasdaq Exchange"
   }
 ]
