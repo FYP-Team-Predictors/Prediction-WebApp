@@ -44,7 +44,7 @@ export default function Crypto_info() {
             >
                 <Heading
                     fontWeight="normal"
-                    mb={2}
+                    mb={-70}
                     letterSpacing="tight"
                 >
                     Predicting, <Flex display="inline-flex" fontWeight="bold">Crypto & Stocks</Flex>
