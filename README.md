@@ -1,4 +1,4 @@
-# Market Bottom Predictor
+# Market Bottom Predictor - Web Application
 
 Predictor is a web application developed using Next.js that serves as a useful tool for identifying future market bottoms. By leveraging advanced algorithms and data analysis techniques, Predictor assists users in making informed decisions about potential market downturns.
 
