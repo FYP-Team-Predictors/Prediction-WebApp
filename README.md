@@ -2,6 +2,15 @@
 
 Predictor is a web application developed using Next.js that serves as a useful tool for identifying future market bottoms. By leveraging advanced algorithms and data analysis techniques, Predictor assists users in making informed decisions about potential market downturns.
 
+Introduction: [YouTube Video](https://youtu.be/sZjwhfJUSSc?si=BvK4vI2XG8XSTf6C)
+
+## Contributers
+
+- [Dulaj Kavinda Dasanayake](https://www.linkedin.com/in/dulaj-kavinda-dasanayake/)
+- [Kavishke Rathneweera](https://www.linkedin.com/in/kavishka-rathnaweera/)
+- [Yasindu Dilshan](https://www.linkedin.com/in/yasindu-dilshan/)
+
+
 ## Features
 * Market Analysis: Predictor performs in-depth analysis of market trends and indicators to predict potential bottoming points.
 * Data Visualization: Utilizing interactive charts and graphs, Predictor presents market data in a visually intuitive manner, aiding users in understanding market dynamics.
@@ -10,9 +19,6 @@ Predictor is a web application developed using Next.js that serves as a useful t
 ## Preview
 <img src="https://github.com/FYP-Team-Predictors/Prediction-WebApp/blob/main/Preview.png"  width="1280" height="720"/>
 
-
-### Demo
-[Demo](https://youtu.be/sZjwhfJUSSc?si=BvK4vI2XG8XSTf6C)
 
 ## Installation
 
