@@ -7,9 +7,12 @@ Predictor is a web application developed using Next.js that serves as a useful t
 * Data Visualization: Utilizing interactive charts and graphs, Predictor presents market data in a visually intuitive manner, aiding users in understanding market dynamics.
 * Customizable Settings: Users can adjust various parameters and settings to tailor predictions according to their specific preferences and investment strategies.
 
-## Demo
+## Preview
+<img src="https://github.com/FYP-Team-Predictors/Prediction-WebApp/blob/main/Preview.png"  width="1280" height="720"/>
 
-[Demo]([url](https://youtu.be/sZjwhfJUSSc?si=BvK4vI2XG8XSTf6C))
+
+### Demo
+[Demo](https://youtu.be/sZjwhfJUSSc?si=BvK4vI2XG8XSTf6C)
 
 ## Installation
 
